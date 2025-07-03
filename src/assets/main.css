@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+#app {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: midnightblue ;
+  color: yellow;
+  margin-left: 150px;
+  margin-right: 150px;
+} 
+
+h1, h2 {
+  text-align: center;
+  margin: 20px 0;
+}
+
+h3 {
+  margin: 20px 0;
+}
+
+p {
+  line-height: 1.6;
+  margin: 10px 0;
+}
+
+a {
+  color: antiquewhite;
+  line-height: 1.6;
+}
+
+li {
+  line-height: 1.6;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  margin-top: auto;
+}
