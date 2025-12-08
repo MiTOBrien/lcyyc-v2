@@ -1,10 +1,38 @@
 <script setup>
+import { ref } from 'vue'
+
+const today = new Date()
+const year = today.getFullYear()
+const month = today.getMonth()
+
+function getSecondSaturday(year, month) {
+  const date = new Date(year, month, 1)
+  let saturdayCount = 0
+
+  while (true) {
+    if (date.getDay() === 6) { // Saturday is day 6
+      saturdayCount++
+      if (saturdayCount === 2) break
+    }
+    date.setDate(date.getDate() + 1)
+  }
+  return date
+}
+
+let meetingDate = getSecondSaturday(year, month)
+
+if (today > meetingDate) {
+  meetingDate = getSecondSaturday(year, month + 1)
+}
+
+const options = { month: 'long', day: 'numeric', year: 'numeric' }
+const formattedDate = ref(meetingDate.toLocaleDateString(undefined, options))
 </script>
 
 <template>
   <main>
     <h1>Welcome to the LCYYC (Lake County Yo-Yo Club)!</h1>
-    <h2>Next meet: July 12th, 2025 - 1:00PM-4:00PM</h2>
+    <h2>Next meet: {{ formattedDate }} - 1:00PM-4:00PM</h2>
     <p>
       YoYoing is great for everyone, no matter how young or old, even if you are a total beginner or sponsored professional. You can click the "Why Yo-Yo?" link to see a few of the top benefits from yo-yoing. No expexience is necessary to show up and throw with us. We will have some beginner throws we can loan you for you to try out yo-yoing if you've never done it. If you're a beginner we can help you increase your skills. If you're an expert, even better, come and help teach us a thing or two.
     </p>
